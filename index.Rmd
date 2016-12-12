@@ -6,7 +6,7 @@ job         : Data Products
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
-widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
+widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
@@ -24,5 +24,14 @@ knit        : slidify::knit2slides
 ![width](blackscholes.png)
 
 
+The R function pnorm is used to give the cumulitive normal distribution function in the model 
+
+source:(http://www.investopedia.com/university/options-pricing/black-scholes-model.asp)
 
 ---
+
+## Example 
+
+
+
+
