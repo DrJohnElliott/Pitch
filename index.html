@@ -46,7 +46,7 @@
   </hgroup>
   <article data-timings="">
     <ol>
-<li>Option to enter user data or use pre-loaded data</li>
+<li>The Option Pricer Tool gives the option to enter user data or use pre-loaded data</li>
 <li>Code avalible on GITHub at <a href="http://github.com/DrJohnElliott/Option_Pricer.git">GIThub</a></li>
 <li>The Option Pricer Tool is hosted on <a href="http://drjohn.shinyapps.io/Option_Pricer/">Shinnyapps</a></li>
 </ol>
@@ -57,11 +57,10 @@
 
 <slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>Black-Scholes</h2>
+    <h2>Black-Scholes Model used for Option Pricing</h2>
   </hgroup>
   <article data-timings="">
-    <p>1.
-2.</p>
+    <p><img src="blackscholes.png" alt="width"></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -86,7 +85,7 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Black-Scholes'>
+        data-slide=2 title='Black-Scholes Model used for Option Pricing'>
          2
       </a>
     </li>
@@ -106,7 +105,21 @@
 </body>
   <!-- Load Javascripts for Widgets -->
   
-  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
   <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   <!-- DONE LOADING HIGHLIGHTER JS FILES -->
