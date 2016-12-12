@@ -79,12 +79,13 @@ option_price <- function(u_p,x_p,v,i_r,d,t_e){
 ```
 
 The effects of volatility on option prices can lead to undesirable results when the effects are not realized. The Option Pricing Tool allows the user to examine the effects of changing volatility on option prices.
-Lets calculate the price of some options. Lets say the stock for TESLA has a maket price of 186.80 USD, A strike price of 180 USD, Volatility is estimated at 35% and the Option contracts expire in 30 days. 
+Lets calculate the price of some options. If the stock TESLA has a market price of 186.80 USD, strike price of 180 USD, and Volatility is estimated at 35% and an expiration in 30 days. 
+Here we will use the function option_price inline in the document to calculate CALL price ie. "r option_price(186.8,180,35,1,1,30)[1] " and the using the suffix [2] for the PUT price
 
 * Call price: `r option_price(186.8,180,35,1,1,30)[1]`
 * Put price: `r option_price(186.8,180,35,1,1,30)[2]`
 
-If the Stock goes up 4 USD to 190.8 but volatility drops to 10% and keeping all other varibles constant, your contracts would decrease in value.
+If the Stock goes up 4 USD to 190.8 but volatility drops to 10% and keeping all other variables constant, your contracts would decrease in value.
 
 * Call price: `r option_price(190.8,180,10,1,1,30)[1]`
 * Put price: `r option_price(190.8,180,10,1,1,30)[2]`
