@@ -45,10 +45,20 @@
     <h2>Option Pricing Tool</h2>
   </hgroup>
   <article data-timings="">
-    <ol>
-<li>The Option Pricer Tool gives the option to enter user data or use pre-loaded data</li>
-<li>Code avalible on GITHub at <a href="http://github.com/DrJohnElliott/Option_Pricer.git">GIThub</a></li>
-<li>The Option Pricer Tool is hosted on <a href="http://drjohn.shinyapps.io/Option_Pricer/">Shinnyapps</a></li>
+    <p>The Option Pricing Tool calculates the option prices for two types of option contracts. 
+The contracts are leveraged financial vehicles controlling 100 shares of the underlying stock. Both types of contracts have an &quot;Expiration&quot; date and are deemed void and worthless after that date.</p>
+
+<ul>
+<li><p>Calls - A contract where the owner has the &quot;Option&quot; to buy the shares at an agreed upon price called the &quot;strike price&quot; of the contract.</p></li>
+<li><p>Puts - A contract where the owner has the &quot;Option&quot; to sell the shares at an agreed upon price called the &quot;strike price&quot; of the contract. </p></li>
+</ul>
+
+<h3>Option Pricing Tool Details</h3>
+
+<ol>
+<li>The Option Pricing Tool gives the option to enter user data or use pre-loaded data</li>
+<li>Code available on GITHub at <a href="http://github.com/DrJohnElliott/Option_Pricer.git">GIThub</a></li>
+<li>The Option Pricing Tool is hosted on <a href="http://drjohn.shinyapps.io/Option_Pricer/">Shinnyapps</a></li>
 </ol>
 
   </article>
@@ -62,7 +72,7 @@
   <article data-timings="">
     <p><img src="blackscholes.png" alt="width"></p>
 
-<p>The R function pnorm is used to give the cumulitive normal distribution function in the model </p>
+<p>The R function pnorm is used to give the cumulative normal distribution function in the model </p>
 
 <p>source:(<a href="http://www.investopedia.com/university/options-pricing/black-scholes-model.asp">http://www.investopedia.com/university/options-pricing/black-scholes-model.asp</a>)</p>
 
@@ -71,8 +81,57 @@
 </slide>
 
 <slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Example</h2>
+  </hgroup>
   <article data-timings="">
-    
+    <p>The effects of volatility on option prices can lead to undesirable results when the effects are not realized. The Option Pricing Tool allows the user to examine the effects of changing volatility on option prices.
+Lets calculate the price of some options. Lets say the stock for TESLA has a maket price of 186.80 USD, A strike price of 180 USD, Volatility is estimated at 35% and the Option contracts expire in 30 days. </p>
+
+<ul>
+<li>Call price: 11.22</li>
+<li>Put price: 4.43</li>
+</ul>
+
+<p>If the Stock goes up 4 USD to 190.8 but volatility drops to 10% and keeping all other varibles constant, your contracts would decrease in value.</p>
+
+<ul>
+<li>Call price: 10.83</li>
+<li>Put price: 0.04</li>
+</ul>
+
+<p>This example shows why it is important to understand the effects of volatility on option prices.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Function used to calculate Option Prices</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">option_price &lt;- function(u_p,x_p,v,i_r,d,t_e){
+        ln_ratio        &lt;- log(u_p/x_p)
+        numerator_1     &lt;- (i_r - d + v^2/2)*t_e
+        denominator_1   &lt;- v * sqrt(t_e)
+        formula_1       &lt;- (ln_ratio+numerator_1)/denominator_1
+        formula_2       &lt;- formula_1- denominator_1
+        norm_d1         &lt;- pnorm(formula_1,0,1)
+        norm_d2         &lt;- pnorm(formula_2,0,1)
+        norm_neg_d1     &lt;- pnorm(-formula_1,0,1)
+        norm_neg_d2     &lt;- pnorm(-formula_2,0,1)
+        exponents_1_2   &lt;- exp(-i_r*t_e)
+        X_e_rt          &lt;- x_p * exponents_1_2
+        e_qt            &lt;- exp(-d*t_e)
+        S0_e_qt         &lt;- u_p*e_qt
+        Call_option_price       &lt;- round(S0_e_qt * norm_d1 - X_e_rt * norm_d2,digits = 2)
+        Put_option_price        &lt;- round(X_e_rt*norm_neg_d2-S0_e_qt*norm_neg_d1, digits = 2)
+        option_price            &lt;- c(Call_option_price,Put_option_price)
+        return(option_price )
+}
+</code></pre>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -95,8 +154,14 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='NA'>
+        data-slide=3 title='Example'>
          3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Function used to calculate Option Prices'>
+         4
       </a>
     </li>
   </ul>
